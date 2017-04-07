@@ -11,50 +11,14 @@ var port =process.env.port ||3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+
 //app.use(bodyParser.urlencoded({extended:true}));
 
 //add routes
+bookRouter =require('./Routes/bookRoutes')(Book);
 
-var bookRouter =express.Router();
-
-bookRouter.route('/Books/')
-.post(function(req,res){
-    var book = new Book(req.body);
-    book.save();
-    res.status(201).send(book);
-    
-})
-.get(function(req, res){
-    var query ={};
-    if(req.query.genre){
-        query.genre =req.query.genre;
-    }
-    Book.find(query,function(err,books){
-        if(err){
-           res.status(500).send(err);}
-        else{
-            res.json(books);
-            console.log("data")
-    }
-    });
-   // res.json(responseJson);
-});
-
-bookRouter.route('/Books/:bookId')
-.get(function(req, res){
-  
-   
-    Book.findById(req.params.bookId,function(err,books){
-        if(err)
-           res.status(500).send(err);
-        else
-            res.json(books);
-    });
-   // res.json(responseJson);
-});
-
-app.use('/api',bookRouter)
-
+app.use('/api/books',bookRouter)
+//app.use('/api/authors',authorRouter)
 
 app.get('/',function(req,res){
 res.send('Hello, welcome to my API ');
