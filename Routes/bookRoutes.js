@@ -37,7 +37,21 @@ bookRouter.route('/:bookId')
             res.json(books);
     });
    // res.json(responseJson);
-});
+})
+.put(function(req,res){
+ Book.findById(req.params.bookId,function(err,book){
+        if(err)
+           res.status(500).send(err);
+        else            
+            book.ttle= req.body.title;
+            book.author=req.body.author;
+            book.genre=req.body.genre;
+            book.read=req.body.read;
+            book.save();
+            res.json(book);
+    });
+})
+;
 return bookRouter;
 };
 
