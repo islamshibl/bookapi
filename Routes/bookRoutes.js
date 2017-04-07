@@ -21,7 +21,7 @@ var routes = function (Book) {
                 }
                 else {
                     res.json(books);
-                    console.log("data")
+                   
                 }
             });
             // res.json(responseJson);
@@ -78,6 +78,16 @@ var routes = function (Book) {
                 else{
                    res.json(req.book); 
                 }
+            });
+        })
+        .delete(function(req,res){
+            req.book.remove(function(err){
+                if(err){
+                    res.status(500).send(err);
+                }else{
+                    res.status(204).send('Item removed');
+                }
+
             });
         })
         ;
