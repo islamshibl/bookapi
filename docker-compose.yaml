@@ -1,0 +1,23 @@
+version: "3"
+services:
+  bookapi:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/BOOKAPI/app
+    depends_on:
+      - mongo
+    ports:
+      - 3000:3000
+    environment:
+     - NODE_ENV_NAME=development
+     - DEBUG=*
+     - mongohost=mongo
+    command: npm run start-dev
+  mongo:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    restart: unless-stopped
+    ports:
+    - "27017:27017"

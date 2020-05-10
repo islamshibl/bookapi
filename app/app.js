@@ -2,7 +2,7 @@ var express =require('express');
     mongoose =require('mongoose');
     var bodyParser = require('body-parser');
 
-var db =mongoose.connect('mongodb://localhost/bookAPI');
+var db =mongoose.connect(`mongodb://${process.env.mongohost}:27017/bookAPI:`,{useNewUrlParser: true});
 var Book =require('./models/bookModel');
 var app  =express();
 
