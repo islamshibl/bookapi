@@ -1,0 +1,17 @@
+kubectl create -f mongo-service.yaml
+
+kubectl delete -f mongo-service.yaml
+
+kubectl create -f mongo-controller.yaml
+
+kubectl delete -f mongo-controller.yaml
+
+
+kubectl create -f web-service.yaml
+
+kubectl delete -f web-service.yaml
+
+
+kubectl create -f web-controller.yaml
+
+kubectl delete -f web-controller.yaml

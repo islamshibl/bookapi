@@ -1,4 +1,4 @@
-From node:13-alpine
+FROM node:13-alpine
 
 COPY . /BOOKAPI/
 WORKDIR /BOOKAPI
