@@ -1,3 +1,5 @@
+https://github.com/kubernetes/examples/tree/master/staging/nodesjs-mongodb
+
 kubectl create -f mongo-service.yaml
 
 kubectl delete -f mongo-service.yaml
